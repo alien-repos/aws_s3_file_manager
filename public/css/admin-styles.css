@@ -1,0 +1,15 @@
+#admin-panel {
+    margin: 60px 30px 10px 30px !important;
+}
+
+.cloud-icon {
+    float: left;
+    width: 62px;
+    height: auto;
+}
+
+.nav-list-admin {
+	margin-top: 200px;
+	line-height: 45px;
+	list-style-type: none;
+}
