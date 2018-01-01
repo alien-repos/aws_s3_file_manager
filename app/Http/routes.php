@@ -1,16 +1,7 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Routes File
-|--------------------------------------------------------------------------
-|
-| Here is where you will register all of the routes in an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
 
+<<<<<<< HEAD
 
 /*****************************
     MODULE:1 - CRUD
@@ -87,3 +78,10 @@ Route::post('/{updaterootFolderName}',  'S3Controller@updateConfig');
 
 Route::GET('/laravelRequest', 'RequestController@laravelRequest');
 >>>>>>> eb1892b... copied files to new repo
+=======
+Route::get('/', 'DashboardController@index');
+
+Route::get('bucket/all', 'BucketController@getAllBuckets');
+
+Route::post('/files', 'KeyController@getAllKeysInPath');
+>>>>>>> b1dc9dc... added choosing and loading buckets and items, corrected one way file navigation in list view, removed junk code

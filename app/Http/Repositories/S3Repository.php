@@ -3,19 +3,21 @@
 namespace App\Http\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
-// use Illuminate\Http\Request;
 use \Config;
 use \App;
 use ZipArchive;
 use Illuminate\Filesystem\Filesystem;
+<<<<<<< HEAD
 // use Aws\S3\S3Client;
+=======
+>>>>>>> b1dc9dc... added choosing and loading buckets and items, corrected one way file navigation in list view, removed junk code
 
 class S3Repository extends Model
 {
     public function __construct()
     {
         $this->s3 = App::make('aws')->createClient('s3');
-        $this->bucket = Config::get('s3.bucketname');
+        // $this->bucket = Config::get('s3.bucketname');
         $this->filesystem = new Filesystem();
         $this->storage = public_path('uploads');
         // Instantiate the client.
@@ -114,29 +116,29 @@ class S3Repository extends Model
 
     public function listView($path)
     {
+<<<<<<< HEAD
         // Config data
         $baseUrl = Config::get('app.url');
         $storagePath = Config::get('s3.upload_store');
         // $s3Key = 'fosBhopal/12-2015/8282_srimaa_energy/';
+=======
+>>>>>>> b1dc9dc... added choosing and loading buckets and items, corrected one way file navigation in list view, removed junk code
         $s3Key = $path;
 
-        // $dirList = scandir($storagePath);
-        // // echo $dirList[5];
-        // $urlsArray = [];
-        // foreach ($dirList as $key => $filename) {
-        //     // If periods are present in dir list ignore them
-        //     if ($filename == '.' || $filename == '..') {
-        //         continue;
-        //     }
-        //     array_push($urlsArray, $baseUrl . 'uploads' . '/' . $filename);
-        // }
-        // return $urlsArray;
         // Use the high-level iterators (returns ALL of your objects).
         $objects = $this->s3->getIterator('ListObjects', array(
             'Bucket' => $this->bucket,
             'Prefix' => $s3Key));
+<<<<<<< HEAD
         
         $urls = [];
+=======
+        $files = [];
+        // foreach ($objects as $k => $v) {
+        //     print_r($v);
+        // }
+        // exit;
+>>>>>>> b1dc9dc... added choosing and loading buckets and items, corrected one way file navigation in list view, removed junk code
         
         foreach ($objects as $object) {
             $s3Key = rtrim($s3Key, '/') . '/';
@@ -147,10 +149,21 @@ class S3Repository extends Model
             if ($dirName == null) {
                 continue;
             }
+<<<<<<< HEAD
             $dirName = $s3Key . $dirName;
             array_push($urls, $dirName);
         }
         $urls = array_unique($urls);
+=======
+
+            // $currentPaths[] = $s3Key . $dirName;
+            $files[] = $dirName;
+        }
+
+        // print_r($urls);
+        // exit;
+        $urlArray['urls'] = ['curernt_path' => $path, 'files' => array_unique($files)];
+>>>>>>> b1dc9dc... added choosing and loading buckets and items, corrected one way file navigation in list view, removed junk code
         
         return $urls;
     }
