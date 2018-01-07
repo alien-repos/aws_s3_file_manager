@@ -60,7 +60,7 @@
   </div>
 </div>
 
-<span id="loading_icon" style="position: absolute; top: 200px; left: 48%; background: #61c0de; color: #fff; padding: 5px; border-radius: 3px; border-width: 2px; border-color: #ccc; border: 1px solid #0e90b9; box-shadow: 3px 3px #ccc;">Wait...</span>
+<span id="loading_icon" style="position: absolute; top: 200px; left: 48%; background: #000c; color: #fff; padding: 5px; border-radius: 3px; border-width: 2px; border-color: #ccc; border: 1px solid #000; box-shadow: 3px 3px #ccc;">Wait...</span>
 
 <!-- post page load scripts -->
 <script src="{{asset('js/home.js')}}"></script>
