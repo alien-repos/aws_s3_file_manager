@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>My Cloud</title>
+  <title style="color:#7cc2dd">My Cloud</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -22,13 +22,13 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-cloud"></span> My Cloud</a>
+      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-cloud" style="color:#7cc2dd"></span> My Cloud</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
+      <li><a href="{{ route('settings') }}">Settings</a></li>
+      <!-- <li><a href="#">Page 2</a></li> -->
+      <!-- <li><a href="#">Page 3</a></li> -->
     </ul>
   </div>
 </nav>
@@ -60,7 +60,15 @@
   </div>
 </div>
 
+<span id="loading_icon" style="position: absolute; top: 200px; left: 48%; background: #61c0de; color: #fff; padding: 5px; border-radius: 3px; border-width: 2px; border-color: #ccc; border: 1px solid #0e90b9; box-shadow: 3px 3px #ccc;">Wait...</span>
+
 <!-- post page load scripts -->
 <script src="{{asset('js/home.js')}}"></script>
+
+<!-- <script type="text/javascript">
+// hide loading icon
+hideLoadingIcon();
+</script> -->
+
 </body>
 </html>

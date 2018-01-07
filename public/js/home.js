@@ -9,6 +9,7 @@ $.get("/bucket/all", function(data, status) {
     // console.log(html);
 
     $('#bucket_container').html(html);
+    hideLoadingIcon();
 });
 
 $('#load_bucket').click(function() {
@@ -17,7 +18,7 @@ $('#load_bucket').click(function() {
 });
 
 function getAllObjectsFromBucket(bucket, filePath) {
-    alert('dfsdfsf');
+    showLoadingIcon();
     $.post("/files", {
         bucket: bucket,
         path: filePath
@@ -27,10 +28,11 @@ function getAllObjectsFromBucket(bucket, filePath) {
         data = JSON.parse(data);
         // console.log(data.all_keys);
         $.each(data.urls.files, function(key, val) {
-            html += '<li><span class="glyphicon glyphicon-folder-close" style="color:#e6c66a !important"></span> <a ondblclick="onFileClick()" href="#" data-bucket="' + bucket + '" data-url="' + data.urls.curernt_path + val + '" style="color:#000 !important" id="file" >' + val + '</a></li>';
+            html += '<li><span class="glyphicon glyphicon-folder-close" style="color:#7cc2dd !important"></span> <a ondblclick="onFileClick()" href="#" data-bucket="' + bucket + '" data-url="' + data.urls.curernt_path + val + '" style="color:#000 !important" id="file" >' + val + '</a></li>';
         });
         html += '</ul>';
         $('#file_container').html(html);
+        hideLoadingIcon();
     });
 }
 
@@ -40,4 +42,14 @@ function onFileClick() {
     var bucket = $('#file').data("bucket");
     var filePath = $('#file').data("url");
     getAllObjectsFromBucket(bucket, filePath);
+}
+
+function showLoadingIcon() {
+    console.log('show');
+    $('#loading_icon').show();
+}
+
+function hideLoadingIcon() {
+    console.log('hide');
+    $('#loading_icon').hide();
 }
